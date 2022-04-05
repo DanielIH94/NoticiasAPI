@@ -49,10 +49,9 @@ public class RespuestaService implements IRespuestaService {
 
     @GraphQLMutation(name = "addRespuesta")
     public Respuesta addRespuesta(
-        @GraphQLNonNull Respuesta respuesta,
-        @GraphQLNonNull Integer idComentario,
-        @GraphQLNonNull Integer idUsuario
-    ) {
+            Respuesta respuesta,
+            Integer idComentario,
+            Integer idUsuario) {
         Optional<Comentario> optComentario = comentarioRepository.findById(idComentario);
         Optional<Usuario> optUsuario = usuarioRepository.findById(idUsuario);
 
