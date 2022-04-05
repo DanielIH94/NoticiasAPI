@@ -49,7 +49,7 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @GraphQLQuery(name = "isInterno")
-    public Boolean isInternal(@GraphQLArgument(name = "UserID") Integer idUser) {
+    public Boolean isInternal(@GraphQLArgument(name = "userID") Integer idUser) {
         Usuario usuario = usuarioRepository.findById(idUser).get();
         if (usuario.getPersonal() == null)
             return false;

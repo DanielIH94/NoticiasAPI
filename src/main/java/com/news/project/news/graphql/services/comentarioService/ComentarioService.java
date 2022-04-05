@@ -49,10 +49,9 @@ public class ComentarioService implements IComentarioService {
 
     @GraphQLMutation(name = "addComentario")
     public Comentario addComentario(
-            @GraphQLNonNull Comentario comentario,
-            @GraphQLNonNull Integer idNota,
-            @GraphQLNonNull Integer idUsuario
-    ) {
+            Comentario comentario,
+            Integer idNota,
+            Integer idUsuario) {
         Optional<Nota> optNota = notaRepository.findById(idNota);
         Optional<Usuario> optUsuario = usuarioRepository.findById(idUsuario);
         optNota.ifPresent(nota -> comentario.setNota(nota));

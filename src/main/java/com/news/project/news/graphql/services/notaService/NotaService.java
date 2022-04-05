@@ -44,7 +44,7 @@ public class NotaService implements INotaService {
     }
 
     @GraphQLMutation(name = "addNota")
-    public Nota addNota(@GraphQLNonNull Nota nota, Integer idUsuario) {
+    public Nota addNota(Nota nota, Integer idUsuario) {
         Optional<Usuario> optUsaurio = usuarioRepository.findById(idUsuario);
         optUsaurio.ifPresent(usuario -> nota.setUsuario(usuario));
 
