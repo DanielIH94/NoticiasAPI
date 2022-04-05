@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import io.leangen.graphql.annotations.GraphQLIgnore;
+
 /**
  * 
  * @author Daniel Ibarra Hdez
@@ -28,15 +30,12 @@ public class Externo {
     public int getIdExterno() {
         return idExterno;
     }
-
-    public void setIdExterno(int idExterno) {
-        this.idExterno = idExterno;
-    }
-
+    
     public Usuario getUsuario() {
         return usuario;
     }
 
+    @GraphQLIgnore
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }

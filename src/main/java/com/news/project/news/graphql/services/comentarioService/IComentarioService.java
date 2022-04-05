@@ -16,7 +16,7 @@ public interface IComentarioService {
 
     List<Comentario> getComentarios();
 
-    Comentario addComentario(Comentario comentario);
+    Comentario addComentario(Comentario comentario, Integer idNota, Integer idUsuario);
 
     Comentario updateComentario(Comentario comentario);
 

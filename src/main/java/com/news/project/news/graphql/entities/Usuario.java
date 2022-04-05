@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import io.leangen.graphql.annotations.GraphQLIgnore;
 
 /**
  * 
@@ -19,7 +22,6 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
-
     @Id
     @Column(name = "id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,27 +37,18 @@ public class Usuario {
     @Column(name = "foto", length = 100000)
     private byte[] foto;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "id_personal", nullable = true)
     private Personal personal;
-
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Externo externo;
-
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Empleado empleado;
 
     @OneToMany(mappedBy = "usuario")
     private List<Nota> notas;
-    
+
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentarios;
-    
+
     @OneToMany(mappedBy = "usuario")
     private List<Respuesta> respuestas;
-
-    public int getId() {
-        return idUsuario;
-    }
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -81,6 +74,7 @@ public class Usuario {
         return personal;
     }
 
+    @GraphQLIgnore
     public void setPersonal(Personal personal) {
         this.personal = personal;
     }
@@ -89,22 +83,38 @@ public class Usuario {
         return notas;
     }
 
-    public void setNotas(List<Nota> notas) {
-        this.notas = notas;
-    }
-
     public List<Comentario> getComentarios() {
         return comentarios;
-    }
-
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
     }
 
     public List<Respuesta> getRespuestas() {
         return respuestas;
     }
 
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    @GraphQLIgnore
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    @GraphQLIgnore
+    public void setNotas(List<Nota> notas) {
+        this.notas = notas;
+    }
+
+    @GraphQLIgnore
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    @GraphQLIgnore
     public void setRespuestas(List<Respuesta> respuestas) {
         this.respuestas = respuestas;
     }

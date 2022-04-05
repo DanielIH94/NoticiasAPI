@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import io.leangen.graphql.annotations.GraphQLIgnore;
+
 /**
  * 
  * @author Daniel Ibarra Hdez
@@ -48,9 +50,12 @@ public class Comentario {
         return idComentario;
     }
 
+    @GraphQLIgnore
     public void setIdComentario(int idComentario) {
         this.idComentario = idComentario;
     }
+
+
 
     public String getContenido() {
         return contenido;
@@ -72,6 +77,7 @@ public class Comentario {
         return nota;
     }
 
+    @GraphQLIgnore
     public void setNota(Nota nota) {
         this.nota = nota;
     }
@@ -80,6 +86,7 @@ public class Comentario {
         return usuario;
     }
 
+    @GraphQLIgnore
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -88,6 +95,7 @@ public class Comentario {
         return respuestas;
     }
 
+    @GraphQLIgnore
     public void setRespuestas(List<Respuesta> respuestas) {
         this.respuestas = respuestas;
     }

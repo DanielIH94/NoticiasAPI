@@ -15,7 +15,7 @@ public interface INotaService {
 
     List<Nota> getNotas();
 
-    Nota addNota(Nota nota);
+    Nota addNota(Nota nota, Integer idUsuario);
 
     Nota updateNota(Nota nota);
 

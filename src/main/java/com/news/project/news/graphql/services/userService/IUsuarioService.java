@@ -15,9 +15,13 @@ public interface IUsuarioService {
 
     List<Usuario> getUsuarios();
 
-    Usuario addUsuario(Usuario usuario);
+    Usuario addUsuario(Usuario usuario, Integer idPersonal);
 
     Usuario updateUsuario(Usuario usuario);
 
     Usuario deleteUsuario(Usuario usuario);
+
+    Boolean isInternal(Integer id);
+
+    Usuario login(String username, String password);
 }

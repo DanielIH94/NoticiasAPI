@@ -15,7 +15,7 @@ public interface IRespuestaService {
 
     List<Respuesta> getRespuestas();
 
-    Respuesta addRespuesta(Respuesta respuesta);
+    Respuesta addRespuesta(Respuesta respuesta, Integer idComentario, Integer idUsuario);
 
     Respuesta updateRespuesta(Respuesta respuesta);
 

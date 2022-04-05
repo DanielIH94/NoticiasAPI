@@ -1,6 +1,6 @@
 package com.news.project.news.graphql.entities;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import io.leangen.graphql.annotations.GraphQLIgnore;
+
 /**
  * 
  * @author Daniel Ibarra Hdez
@@ -25,7 +27,7 @@ public class Nota {
     @Id
     @Column(name = "id_nota")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idNota;
 
     @Column(name = "titulo")
     private String titulo;
@@ -43,12 +45,13 @@ public class Nota {
     @OneToMany(mappedBy = "nota")
     private List<Comentario> comentarios;
 
-    public int getId() {
-        return id;
+    public int getIdNota() {
+        return idNota;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @GraphQLIgnore
+    public void setIdNota(int idNota) {
+        this.idNota = idNota;
     }
 
     public String getTitulo() {
@@ -79,6 +82,7 @@ public class Nota {
         return usuario;
     }
 
+    @GraphQLIgnore
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -87,6 +91,7 @@ public class Nota {
         return comentarios;
     }
 
+    @GraphQLIgnore
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
